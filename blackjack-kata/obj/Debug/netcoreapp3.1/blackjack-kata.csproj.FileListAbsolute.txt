@@ -1,0 +1,10 @@
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/bin/Debug/netcoreapp3.1/blackjack-kata.deps.json
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/bin/Debug/netcoreapp3.1/blackjack-kata.runtimeconfig.json
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/bin/Debug/netcoreapp3.1/blackjack-kata.runtimeconfig.dev.json
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/bin/Debug/netcoreapp3.1/blackjack-kata.dll
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/bin/Debug/netcoreapp3.1/blackjack-kata.pdb
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/obj/Debug/netcoreapp3.1/blackjack-kata.csprojAssemblyReference.cache
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/obj/Debug/netcoreapp3.1/blackjack-kata.AssemblyInfoInputs.cache
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/obj/Debug/netcoreapp3.1/blackjack-kata.AssemblyInfo.cs
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/obj/Debug/netcoreapp3.1/blackjack-kata.dll
+/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/obj/Debug/netcoreapp3.1/blackjack-kata.pdb

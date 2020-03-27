@@ -2,8 +2,16 @@ using System;
 
 namespace blackjack_kata
 {
-    class Card
+    public class Card
     {
-        private
+        public CardRank Rank { get; }
+        public CardSuit Suit { get; }
+
+        public Card (CardRank newRank, CardSuit newSuit) {
+            Rank = newRank;
+            Suit = newSuit;
+          //throw new NotImplementedException();
+        
+        }
     }
 }

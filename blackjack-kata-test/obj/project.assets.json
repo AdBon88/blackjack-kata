@@ -1962,6 +1962,16 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "blackjack-kata/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/blackjack-kata.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/blackjack-kata.dll": {}
+        }
       }
     }
   },
@@ -6569,11 +6579,17 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "blackjack-kata/1.0.0": {
+      "type": "project",
+      "path": "../blackjack-kata/blackjack-kata.csproj",
+      "msbuildProject": "../blackjack-kata/blackjack-kata.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.NET.Test.Sdk >= 16.2.0",
+      "blackjack-kata >= 1.0.0",
       "coverlet.collector >= 1.0.1",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
@@ -6602,7 +6618,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/blackjack-kata.csproj": {
+              "projectPath": "/Users/adam.bonarrigo/Projects/blackjack-kata/blackjack-kata/blackjack-kata.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
