@@ -14,13 +14,7 @@ namespace blackjack_kata
         
         }
 
-        // //is this needed?
-        public override bool Equals ( object obj )
-        {
-            return Equals(obj as Card);
-        }
-
-        public bool Equals(Card anotherCard){
+        public bool isDuplicateOf(Card anotherCard){
             
             if (Rank == anotherCard.Rank && Suit == anotherCard.Suit)
                 return true;

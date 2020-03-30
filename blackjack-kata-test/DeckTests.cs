@@ -14,5 +14,32 @@ namespace blackjack_kata
 
             Assert.Equal(expected, actual);
         }
+        
+        [Fact]
+        public void Deck_addCard_addsCardToDeck()
+        {
+            Deck deck = new Deck();
+            deck.AddCard(new Card(CardRank.QUEEN, CardSuit.SPADE));
+            Assert.True(deck.Cards.Count == 53);
+        }
+
+        [Fact]
+        public void Deck_HasNoDuplicateCards_returnsFalseIfContainsDuplicates()
+        {
+            Deck deck = new Deck();
+            deck.AddCard(new Card(CardRank.QUEEN, CardSuit.SPADE));
+
+            Assert.False(deck.HasNoDuplicateCards());
+        }
+
+        [Fact]
+        public void Deck_HasNoDuplicateCards_returnsTrueIfNoDuplicates()
+        {
+            Deck deck = new Deck();
+
+            Assert.True(deck.HasNoDuplicateCards());
+        }
+
+
     }
 }
