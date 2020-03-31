@@ -75,26 +75,6 @@ namespace blackjack_kata
             Cards.Add(new Card(CardRank.KING, CardSuit.CLUB));
             Cards.Add(new Card(CardRank.KING, CardSuit.SPADE));  
         }
-        
-        //discuss
-        public void AddCard(Card card)
-        {
-            Cards.Add(card);
-        }
-        public bool HasNoDuplicateCards()
-        {
-            for (int currentCard = 0; currentCard < Cards.Count; currentCard++)
-            {
-                for(int nextCard = currentCard + 1; nextCard < Cards.Count; nextCard ++)
-                {
-                    if ( Cards[currentCard].isDuplicateOf(Cards[nextCard])){
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
     }
 
 

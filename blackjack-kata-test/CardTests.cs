@@ -50,7 +50,7 @@ namespace blackjack_kata
             Card card1 = new Card(rank, suit);
             Card card2 = new Card(rank, suit);
 
-            Assert.True(card1.isDuplicateOf(card2));
+            Assert.True(card1.Rank == card2.Rank && card1.Suit == card2.Suit);
         }
 
         [Theory]
@@ -62,7 +62,7 @@ namespace blackjack_kata
             Card card1 = new Card(card1Rank, card1Suit);
             Card card2 = new Card(card2Rank, card2Suit);
     
-            Assert.False(card1.isDuplicateOf(card2));
+            Assert.False(card1.Rank == card2.Rank && card1.Suit == card2.Suit);
         }
 
     }
