@@ -75,8 +75,12 @@ namespace blackjack_kata
             Cards.Add(new Card(CardRank.KING, CardSuit.CLUB));
             Cards.Add(new Card(CardRank.KING, CardSuit.SPADE));  
         }
+
+    public Card DrawCard()
+    {
+        Card card = Cards[0];
+        Cards.RemoveAt(0);
+        return card;
     }
-
-
-
+    }
 }

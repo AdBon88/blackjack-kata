@@ -35,5 +35,17 @@ namespace blackjack_kata
             Assert.True(deckHasNoDuplicateCards);
         }
 
+        [Fact]
+        public void Deck_CanDrawCard()
+        {
+            Deck deck = new Deck();
+            int cardCountBeforeDraw = deck.Cards.Count;
+
+            Card card = deck.DrawCard();
+
+            Assert.True(deck.Cards.Count == cardCountBeforeDraw - 1);
+
+        }
+
     }
 }

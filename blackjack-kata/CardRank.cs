@@ -12,8 +12,8 @@ namespace blackjack_kata
         EIGHT,
         NINE,
         TEN,
-        JACK,
-        QUEEN,
-        KING
+        JACK = 10,
+        QUEEN = 10,
+        KING = 10
     }
 }

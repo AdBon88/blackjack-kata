@@ -30,9 +30,9 @@ namespace blackjack_kata
         [InlineData(CardRank.EIGHT, CardSuit.SPADE, 8)]
         [InlineData(CardRank.NINE, CardSuit.CLUB, 9)]
         [InlineData(CardRank.TEN, CardSuit.DIAMOND, 10)]
-        [InlineData(CardRank.JACK, CardSuit.HEART, 11)]
-        [InlineData(CardRank.QUEEN, CardSuit.SPADE, 12)]
-        [InlineData(CardRank.KING, CardSuit.CLUB, 13)]
+        [InlineData(CardRank.JACK, CardSuit.HEART, 10)]
+        [InlineData(CardRank.QUEEN, CardSuit.SPADE, 10)]
+        [InlineData(CardRank.KING, CardSuit.CLUB, 10)]
         
         public void Card_cardRankHasCorrectValue(CardRank rank, CardSuit suit, int expected)
         {
