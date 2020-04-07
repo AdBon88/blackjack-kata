@@ -65,5 +65,16 @@ namespace blackjack_kata
             Assert.False(card1.Rank == card2.Rank && card1.Suit == card2.Suit);
         }
 
+        [Fact]
+        public void Card_canConvertToStringInCorrectFormat()
+        {
+            Card card = new Card(CardRank.KING, CardSuit.SPADE);
+
+            const string expected = "['KING', 'SPADE']";
+            string actual = card.ToString();
+            
+            Assert.Equal(expected, actual);
+        }
+
     }
 }

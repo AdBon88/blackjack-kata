@@ -6,7 +6,8 @@ namespace blackjack_kata
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Blackjack blackjack = new Blackjack();
+            blackjack.run();
         }
     }
 }

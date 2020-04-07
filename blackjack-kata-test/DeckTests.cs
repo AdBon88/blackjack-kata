@@ -31,7 +31,7 @@ namespace blackjack_kata
                     }
                 }
             }
-
+            
             Assert.True(deckHasNoDuplicateCards);
         }
 
@@ -46,6 +46,5 @@ namespace blackjack_kata
             Assert.True(deck.Cards.Count == cardCountBeforeDraw - 1);
 
         }
-
     }
 }
