@@ -11,11 +11,11 @@ namespace blackjack_kata
 
         public void run()
         {
-            displayWelcomeScreenWithOptions();
+            displayWelcome();
             ResetGame();
-            startGame();
+            StartGame();
         }
-        public void displayWelcomeScreenWithOptions()
+        public void displayWelcome()
         {
             //TODO implement options
             Console.WriteLine("\n##################");
@@ -31,9 +31,18 @@ namespace blackjack_kata
             Deck = new Deck();
         }
 
-        public void startGame() //how totest this??
+        public void StartGame() //untested
         {
-            dealFirstHand();
+            ProcessPlayerTurns();
+            if(Player.HasStayed)
+                ProcessDealerTurns();
+
+            Console.WriteLine(EndGameStatusToString());
+        }
+
+        public void ProcessPlayerTurns() //untested
+        {
+            DealFirstHand(Player);
             
             while(!Player.HasStayed && !Player.HasBusted)
             {
@@ -42,28 +51,48 @@ namespace blackjack_kata
                 if (input == 0)
                     Player.HasStayed = true;
                 else
-                    DrawCard();
+                DrawCard(Player);
             }
+
             Console.WriteLine(PlayerStatusToString());
-            Console.WriteLine(EndGameStatusToString());
         }
 
-        public void dealFirstHand()
+        public void ProcessDealerTurns() //untested
         {
-            List<Card> firstHand = Player.DrawFirstTwoCards(Deck);
-            Player.Hand = new Hand(firstHand);
+            DealFirstHand(Dealer);
+
+            while(!Dealer.HasStayed && !Dealer.HasBusted)
+            {
+                Console.WriteLine(DealerStatusToString());
+                DrawCard(Dealer);
+                CheckForDealer17();
+            }
+
+            Console.WriteLine(DealerStatusToString());
         }
 
-        // discuss
+        public void DealFirstHand(Participant activeParticipant)
+        {
+            List<Card> firstHand = activeParticipant.DrawFirstTwoCards(Deck);
+            activeParticipant.Hand = new Hand(firstHand);
+        }
         public string PlayerStatusToString()
         {
-            string status = $"\nYou are currently at {Player.Hand.ValueToString()}";
-            status += $"\nwith the hand {Player.Hand.ToString()}";
+            string output = $"\nYou are currently at {Player.Hand.ValueToString()}";
+            output += $"\nwith the hand {Player.Hand.ToString()}";
     
-            return status;
+            return output;
         }
 
-        public int GetInputForHitOrStay() //untestable
+        public string DealerStatusToString()
+        {
+            string output = $"\nDealer is at {Dealer.Hand.ValueToString()}";
+            output += $"\nwith the hand {Dealer.Hand.ToString()}";
+    
+            return output;
+        }
+
+        public int GetInputForHitOrStay() //untested
         {
             int input;
             
@@ -75,12 +104,22 @@ namespace blackjack_kata
             return input;
         }
 
-        public void DrawCard(){
-            Player.Hit(Deck);
-            int totalCardsInHand = Player.Hand.Cards.Count;
-            Card cardDrawn = Player.Hand.Cards[totalCardsInHand - 1];
+        public void DrawCard(Participant activeParticipant){
+            activeParticipant.Hit(Deck);
+            int totalCardsInHand = activeParticipant.Hand.Cards.Count;
+            Card cardDrawn = activeParticipant.Hand.Cards[totalCardsInHand - 1];
 
-            Console.WriteLine($"You draw {cardDrawn.ToString()}"); //test output also? just get it to return a string
+            Console.WriteLine(DrawCardResultToString(activeParticipant, cardDrawn));
+        }
+
+        public String DrawCardResultToString(Participant activeParticipant, Card cardDrawn)
+        {
+            string output = "";
+            if(activeParticipant.Type == ParticipantType.PLAYER)
+                output = $"You draw {cardDrawn.ToString()}";
+            else
+                output = $"Dealer draws {cardDrawn.ToString()}";
+            return output;
         }
 
         public void Stay()
@@ -88,10 +127,18 @@ namespace blackjack_kata
             Player.HasStayed = true;
         }
         
+        public void CheckForDealer17()
+        {
+            int handSum;
+            Int32.TryParse(Dealer.Hand.ValueToString(), out handSum);
+            if (handSum >= 17 && handSum <= 21)
+                Dealer.HasStayed = true;
+        }
+        
         public string EndGameStatusToString()
         {
-            string endGameStatus = "\nDealer Wins!";
-            return endGameStatus;
+            string output = "\nDealer Wins!";
+            return output;
         }
 
     }
