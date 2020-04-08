@@ -67,7 +67,6 @@ namespace blackjack_kata
                 DrawCard(Dealer);
                 CheckForDealer17();
             }
-
             Console.WriteLine(DealerStatusToString());
         }
 
@@ -88,6 +87,9 @@ namespace blackjack_kata
         {
             string output = $"\nDealer is at {Dealer.Hand.ValueToString()}";
             output += $"\nwith the hand {Dealer.Hand.ToString()}";
+
+            if (Dealer.Hand.GetValue() >= 17 && Dealer.Hand.GetValue() < 21)
+                output +="\n\nDealer stays";
     
             return output;
         }
@@ -118,7 +120,7 @@ namespace blackjack_kata
             if(activeParticipant.Type == ParticipantType.PLAYER)
                 output = $"You draw {cardDrawn.ToString()}";
             else
-                output = $"Dealer draws {cardDrawn.ToString()}";
+                output = $"\nDealer draws {cardDrawn.ToString()}";
             return output;
         }
 
@@ -129,17 +131,46 @@ namespace blackjack_kata
         
         public void CheckForDealer17()
         {
-            int handSum;
-            Int32.TryParse(Dealer.Hand.ValueToString(), out handSum);
-            if (handSum >= 17 && handSum <= 21)
+            if (Dealer.Hand.GetValue() >= 17 && Dealer.Hand.GetValue() <= 21)
                 Dealer.HasStayed = true;
         }
         
         public string EndGameStatusToString()
         {
-            string output = "\nDealer Wins!";
+            string output = "";
+
+            if(Dealer.HasBusted && !Player.HasBusted)
+                output = "\nYou beat the dealer!";
+            else if(!Dealer.HasBusted && Player.HasBusted)
+                output = "\nDealer wins!";
+            else if(PlayerHandBeatsDealerHand())
+                output = "\nYou beat the dealer!";
+            else if (DealerHandBeatsPlayerHand())
+                output = "\nDealer wins!";
+            else
+                output = "\nStand off!";
+    
             return output;
         }
 
+        private bool PlayerHandBeatsDealerHand()
+        {
+            if(Player.Hand.GetValue() > Dealer.Hand.GetValue())
+                return true;
+            else if (Player.Hand.ValueToString() == "Blackjack!" && Dealer.Hand.ValueToString() != "Blackjack!")
+                return true;
+            else
+                return false;
+        }
+
+        private bool DealerHandBeatsPlayerHand()
+        {
+            if(Dealer.Hand.GetValue() > Player.Hand.GetValue())
+                return true;
+            else if (Dealer.Hand.ValueToString() == "Blackjack!" && Player.Hand.ValueToString() != "Blackjack!")
+                return true;
+            else
+                return false;
+        }
     }
 }

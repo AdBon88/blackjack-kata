@@ -15,7 +15,19 @@ namespace blackjack_kata
             Cards = newHand;
         }
         
+
         public string ValueToString()
+        {
+            int totalSum = GetValue();
+
+            if (totalSum == 21 && Cards.Count == 2)
+                return "Blackjack!";
+            else if (totalSum <= 21)
+                return totalSum.ToString();
+            else
+                return "Bust!";
+        }
+        public int GetValue()
         {
             int sumBeforeAces = 0;
             List<Card> aces = new List<Card>();
@@ -38,14 +50,9 @@ namespace blackjack_kata
                 }
             }
             int totalSum = AddAcesToSum(aces, sumBeforeAces);
-
-            if (totalSum < 21)
-                return totalSum.ToString();
-            else if (totalSum == 21)
-                return "Blackjack!";
-            else
-                return "Bust!";
+            return totalSum;
         }
+
         private int AddAcesToSum(List<Card> aces, int currentSum){
             
             foreach (Card ace in aces)

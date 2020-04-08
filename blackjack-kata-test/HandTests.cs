@@ -37,7 +37,7 @@ namespace blackjack_kata
 
         [Theory]
         [InlineData(CardRank.ACE, CardSuit.DIAMOND, CardRank.TEN, CardSuit.HEART, CardRank.FIVE, CardSuit.SPADE, "16")]
-        [InlineData(CardRank.ACE, CardSuit.DIAMOND, CardRank.FOUR, CardSuit.CLUB, CardRank.SIX, CardSuit.HEART, "Blackjack!")]
+        [InlineData(CardRank.ACE, CardSuit.DIAMOND, CardRank.FOUR, CardSuit.CLUB, CardRank.SIX, CardSuit.HEART, "21")]
 
         public void Hand_HandValueIsSumOfCardValues_HasFaceCardsAndAces(CardRank card1Rank, CardSuit card1Suit, CardRank card2Rank, 
             CardSuit card2Suit, CardRank card3Rank, CardSuit card3Suit, string expected)
